@@ -7,7 +7,7 @@ function Header() {
 
     return (
     <div className='flex justify-between items-center shadow-md p-5'>
-            <img src="/autosales.png" width={100} height={100} alt="Auto Sales" />
+            <img src="/autosales.png" width={200} height={150} alt="Auto Sales" />
             <ul className='hidden md:flex gap-16'>
                 <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>Home</li>
                 <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>Search</li>
@@ -18,7 +18,7 @@ function Header() {
                 {isSignedIn ? (
                     <>
                         <UserButton />
-                        <Button>Submit Listing</Button>
+                        <Button className='border rounded'>Submit Listing</Button>
                     </>
                 ) : (
                     <Button>Sign In</Button>
