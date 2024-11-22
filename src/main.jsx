@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Contact from './contact'
 import Homepage from './homepage'
 import { ClerkProvider } from '@clerk/clerk-react'
+import Profile from './profile'
+import AddListing from './add-listing'
 
 const router=createBrowserRouter([
   {
@@ -12,14 +14,23 @@ const router=createBrowserRouter([
   element:<Homepage/>
   },
   {
+    path:'/profile',
+    element:<Profile/>
+  },
+  {
     path:'/contact',
     element:<Contact/>
+  },
+  {
+    path:'/add-listing',
+    element:<AddListing/>
   }
 ])
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
+
 }
 
 createRoot(document.getElementById('root')).render(
