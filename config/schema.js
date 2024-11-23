@@ -27,7 +27,7 @@ export const CarListing= pgTable ('carListing',{
 })
 
 
-export const CarImages= pgTable('carImages',{
+export const CarImages= pgTable ('carImages',{
     id:serial('id').primaryKey(),
     imageUrl:varchar('imageUrl').notNull(),
     CarListingId:integer('CarListingId').notNull().references(()=> CarListing.id)

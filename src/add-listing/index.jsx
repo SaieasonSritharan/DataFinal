@@ -17,7 +17,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 function AddListing() {
   const [formData, setFormData] = useState({}); 
   const [featuresData, setFeaturesData]=useState([]);
-  const [triggerUploadImage,setTriggerUploadImage]=useState();
+  const [triggerUploadImages,setTriggerUploadImages]=useState();
   const [loader,setLoader]=useState(false);
 
   /** use to capture User data from form */
@@ -30,29 +30,28 @@ function AddListing() {
   }
  /** use to capture Feature tick box*/
   const handleFeatureChange=(name,values)=>{
-    setFeaturesData((prev)=>({
+    setFeaturesData((prevData)=>({
       ...prevData,
-      [name]:value
+      [name]:values
     }))
 
-    console.log(FeaturesData);
+    console.log(featuresData);
   }
 
   const onSubmit=async(e)=>{
-    setLoader(true);
-    e.preventDefualt();
+    e.preventDefault();
     console.log(formData);
     try
     {
-    const result=await db.inset(CarListing).value({
+    const result=await db.insert(CarListing).values({
       ...formData,
       features:featuresData
-    }).returning({id:CarListing.id})
+    }).returning({id:CarListing.id});
     if(result)
     {
       console.log("Data Saved")
-      setTriggerUploadImage(result[0]?.id);
-      setLoader(false);
+      setTriggerUploadImages(result.id);
+      
     }
     }catch(e){
       console.log("Error", e)
@@ -91,15 +90,13 @@ function AddListing() {
               ))}
             </div>
           </div>
-          /**Car image */
+          
           <Separator className="my-6"/>
-          <UploadImages triggerUploadImage={triggerUploadImage}
-          setLoader={(v)=>setLoader(v)}/>
+          <UploadImages triggerUploadImages={triggerUploadImages}/>
           <div className='mt-10 flex justify-end'>
             <Button type='button'
-            disabled={loader} onClick={(e)=>onSubmit(e)}>
+           onClick={(e)=>onSubmit(e)}>
               {!loader?'Submit':<AiOutlineLoading3Quarters className='animate-spin text-lg'/>}
-
               </Button>
           </div>
         </form>
