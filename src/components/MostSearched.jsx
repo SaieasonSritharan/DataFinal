@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Carousel,
     CarouselContent,
@@ -7,13 +7,23 @@ import {
     CarouselPrevious,
   } from "@/components/ui/carousel"
 
-import { BsFuelPump } from "react-icons/bs";
-import { MdOutlineSpeed } from "react-icons/md";
-import { TbManualGearboxFilled } from "react-icons/tb";
 import Caritem from './Caritem';
-
+import { CarListing } from './../../config/schema';
+import { desc } from 'drizzle-orm';
+import { db } from './../../config';
 
 function CarList() {
+  const [carList,setCarList]=useState([]);
+useEffect(()=>{
+  GetPopularCarlist();
+}, []);
+const GetPopularCarlist=async()=>{
+  const result=await db.select().from(CarListing)
+    .orderBy(desc(CarListing.id)) 
+    .limit(10)
+    console.log(result);
+    setCarList(result);
+};
   return (
     <div className='mx-24'>
       <h2 className='font-bold text-center text-3xl mt-16 mb-16'>

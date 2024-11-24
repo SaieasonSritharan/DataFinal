@@ -15,21 +15,13 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useUser } from '@clerk/clerk-react'
 import moment from 'moment'
 function AddListing() {
-<<<<<<< HEAD
-  const [formData, setFormData] = useState({});
-  const [featuresData, setFeaturesData] = useState([]);
-  const [triggerUploadImages, setTriggerUploadImages] = useState();
-  const [loader, setLoader] = useState(false);
-  const [errors, setErrors] = useState({}); 
-  const {user}=useUser();
-=======
   const [formData, setFormData] = useState({}); 
   const [featuresData, setFeaturesData]=useState([]);
   const [triggerUploadImages,setTriggerUploadImages]=useState();
   const [loader,setLoader]=useState(false);
 
   /** use to capture User data from form */
->>>>>>> 63afb77ae8ce13b94dd24c066cea83f4298185a7
+
   const handleInputChange = (name, value) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -38,7 +30,6 @@ function AddListing() {
     // Clear error for the field when the user starts typing
     setErrors((prevErrors) => ({ ...prevErrors, [name]: undefined })); 
   }
-<<<<<<< HEAD
 
   const handleFeatureChange = (name, values) => {
     setFeaturesData((prevData) => ({
@@ -60,32 +51,6 @@ function AddListing() {
 
     if (Object.keys(newErrors).length > 0) {
       return; 
-=======
- /** use to capture Feature tick box*/
-  const handleFeatureChange=(name,values)=>{
-    setFeaturesData((prevData)=>({
-      ...prevData,
-      [name]:values
-    }))
-
-    console.log(featuresData);
-  }
-
-  const onSubmit=async(e)=>{
-    e.preventDefault();
-    console.log(formData);
-    try
-    {
-    const result=await db.insert(CarListing).values({
-      ...formData,
-      features:featuresData
-    }).returning({id:CarListing.id});
-    if(result)
-    {
-      console.log("Data Saved")
-      setTriggerUploadImages(result.id);
-      
->>>>>>> 63afb77ae8ce13b94dd24c066cea83f4298185a7
     }
 
     setLoader(true); 
@@ -148,24 +113,13 @@ function AddListing() {
               ))}
             </div>
           </div>
-<<<<<<< HEAD
 
           <Separator className="my-6" />
-          <UploadImages triggerUploadImages={triggerUploadImages} />
+          
           <div className='mt-10 flex justify-end'>
             <Button type='button' onClick={(e) => onSubmit(e)}>
               {!loader ? 'Submit' : <AiOutlineLoading3Quarters className='animate-spin text-lg' />}
             </Button>
-=======
-          
-          <Separator className="my-6"/>
-          <UploadImages triggerUploadImages={triggerUploadImages}/>
-          <div className='mt-10 flex justify-end'>
-            <Button type='button'
-           onClick={(e)=>onSubmit(e)}>
-              {!loader?'Submit':<AiOutlineLoading3Quarters className='animate-spin text-lg'/>}
-              </Button>
->>>>>>> 63afb77ae8ce13b94dd24c066cea83f4298185a7
           </div>
         </form>
       </div>
