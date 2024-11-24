@@ -20,12 +20,11 @@ function DropDownField({item,handleInputChange}) {
 
   return (
     <div>
-    <Select onValueChange={(value)=>handleInputChange(item.name,value)}>
+    <Select onValueChange={(value)=>handleInputChange(item.name,value)} required={item?.required}>
   <SelectTrigger className="w-full">
     <SelectValue placeholder={item.label} />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="light">Light</SelectItem>
     {item?.options?.map((option,index)=>(
       <SelectItem value={option}>{option}</SelectItem>
     ))}

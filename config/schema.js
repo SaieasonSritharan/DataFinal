@@ -23,12 +23,14 @@ export const CarListing= pgTable ('carListing',{
     vin:varchar('vin'),
     offerType:varchar('offerType'),
     listingDescription:varchar('listingDescription').notNull(),
-    features:json('features')
+    features:json('features'),
+    createdBy:varchar('createBy').notNull(),
+    postedOn:varchar('postedOn')
 })
 
 
-export const CarImages= pgTable('carImages',{
+export const carpictures= pgTable ('carpictures',{
     id:serial('id').primaryKey(),
     imageUrl:varchar('imageUrl').notNull(),
-    CarListingId:integer('CarListingId').notNull().references(()=> CarListing.id)
+    CarListingId:integer('carListingId').notNull().references(()=> CarListing.id)
 })
