@@ -8,6 +8,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import Profile from './profile'
 import AddListing from './add-listing'
 import SearchByCategory from './search/[category]'
+import SearchByOptions from './search'
 
 const router=createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router=createBrowserRouter([
   {
     path:'/search/:category',
     element:<SearchByCategory/>
+  },
+  {
+    path:'/search',
+    element:<SearchByOptions/>
   }
 ])
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY

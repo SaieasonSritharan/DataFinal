@@ -30,13 +30,6 @@ function InfoSection() {
             esse numquam odio deleniti, beatae, magni dolores provident quaerat totam eos, aperiam
             architecto eius quis quibusdam fugiat dicta.
           </p>
-
-          <a
-            href="#"
-            className="mt-8 inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-          >
-            Get in Touch
-          </a>
         </div>
       </div>
     </div>

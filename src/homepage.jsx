@@ -4,6 +4,8 @@ import Header from './components/header';
 import Hero from './components/hero';
 import Category from './components/category';
 import MostSearched from './components/MostSearched';
+import InfoSection from './components/InfoSection';
+import Footer from './components/Footer';
 
 
 const Homepage = () => {
@@ -14,6 +16,8 @@ const Homepage = () => {
         <Hero/>
         <Category/>
         <MostSearched/>
+        <InfoSection/>
+        <Footer/>
     </div>
   );
 };

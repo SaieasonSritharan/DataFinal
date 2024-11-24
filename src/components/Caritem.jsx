@@ -1,12 +1,4 @@
 import React from 'react';
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-  } from "@/components/ui/carousel"
-
 import { BsFuelPump } from "react-icons/bs";
 import { MdOutlineSpeed } from "react-icons/md";
 import { TbManualGearboxFilled } from "react-icons/tb";
